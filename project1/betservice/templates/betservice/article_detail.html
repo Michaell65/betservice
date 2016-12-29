@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ article.title }}</title>
+
+    {% include 'betservice/head.html' %}
+</head>
+<body>
+
+{% include 'betservice/header.html' %}
+
+<div class="container">
+    <h1>{{ article.title }}</h1>
+    <p>{{ article.publish_date }}, {{ article.author }}</p>
+    <p>{{ article.content | safe }}</p>
+</div>
+
+{% include 'betservice/footer.html' %}
+</body>
+</html>

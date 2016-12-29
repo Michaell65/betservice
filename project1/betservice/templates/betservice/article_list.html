@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Baza wiedzy</title>
+
+    {% include 'betservice/head.html' %}
+</head>
+<body>
+
+{% include 'betservice/header.html' %}
+<div class="container">
+    <h1>Baza wiedzy</h1>
+
+    <div class="row">
+        {% for article in articles %}
+        <div class="col-md-12">
+            <h2><a href="/articles/{{ article.url }}">{{ article.title }}</a></h2>
+            <p>{{ article.publish_date }}</p>
+            <p>{{ article.description|linebreaksbr }}</p>
+            <span>więcej ...</span>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% include 'betservice/footer.html' %}
+</body>
+</html>

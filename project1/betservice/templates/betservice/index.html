@@ -1,0 +1,58 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Serwis bukmacherski</title>
+    {% include 'betservice/head.html' %}
+</head>
+<body>
+{% include 'betservice/header.html' %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Serwis bukmacherski</h1>
+            <p>Cras malesuada a dui a tempor. Phasellus in mattis nulla, sed commodo ipsum. Nam a lacus viverra, ornare
+                erat non, eleifend nisi. Sed fermentum eleifend tristique. Sed semper at lectus a lobortis.</p>
+            <p>Donec efficitur sollicitudin volutpat. Class aptent taciti sociosqu ad litora torquent per conubia
+                nostra, per inceptos himenaeos. Duis ultricies, augue at pulvinar faucibus, metus felis pellentesque
+                dui, at placerat odio ipsum ut eros. Aliquam consectetur turpis mauris, vitae cursus urna euismod sed.
+                Etiam quis est vitae mi sagittis sollicitudin.</p>
+            <p>Duis at venenatis eros. Maecenas pharetra ex ac erat placerat feugiat. Aliquam vel aliquam magna. Nunc eu
+                nisl vitae diam vehicula dictum.</p>
+        </div>
+        <div class="col-md-6">
+            <img class="img-responsive" src="{% static 'images/main1.jpg' %}" />
+        </div>
+    </div>
+
+    <h2>Baza wiedzy</h2>
+    <hr/>
+    <div class="row">
+        {% for article in articles %}
+        <div class="col-md-4">
+            <h3>{{ article.title }}</h3>
+            <p>{{ article.description|linebreaksbr }}</p>
+            <a href="/articles/{{ article.url }}">więcej ...</a>
+        </div>
+        {% endfor %}
+    </div>
+
+    <h2>Aktualności</h2>
+    <hr/>
+    <div class="row">
+        {% for singleNews in news %}
+        <div class="col-md-4">
+            <h3>{{ singleNews.title }}</h3>
+            <p>{{ singleNews.description|linebreaksbr }}</p>
+            <a href="/news/{{ singleNews.url }}">więcej ...</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% include 'betservice/footer.html' %}
+</body>
+</html>
