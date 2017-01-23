@@ -8,3 +8,7 @@ header { margin-bottom: 30px;}
 .nav-acount a {
 	color: #fff;
 }
+
+.right {
+	float: right;
+}

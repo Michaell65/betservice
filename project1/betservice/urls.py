@@ -10,5 +10,7 @@ urlpatterns = [
     url(r'^news$', views.news_list, name='news_list'),
     url(r'^news/([0-9a-z\-]+)$', views.news_detail, name='news_detail'),
 	url(r'^accounts/profile/$', views.profile, name='profile'),
+	url(r'^bet/new/$', views.bet_new, name='bet_new'),
+	url(r'^bet/delete/([1-9]+)$', views.bet_delete, name='bet_delete'),
    # url(r'^accounts/', include('registration.backends.simple.urls'))
 ]

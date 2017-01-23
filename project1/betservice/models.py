@@ -34,8 +34,10 @@ class Bet(models.Model):
 	score1 = models.CharField(max_length=10)
 	score2 = models.CharField(max_length=10)
 	date = models.DateField(default=timezone.now())
+	created = models.DateField(default=timezone.now())
 	description = models.TextField()
-	user = models.ForeignKey(User, unique=True)
+	user = models.ForeignKey(User, unique=False)
+
 	
 	def __str__(self):
 		return self.team1 + " vs " + self.team2

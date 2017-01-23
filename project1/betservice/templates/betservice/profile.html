@@ -11,9 +11,38 @@
     
 	{% if user.is_authenticated %}
 					<h1>Strona profilowa dla konta {{ user.username }}</h1>	
+					<h3>Opcje</h3>
+					
 					<p>
 						<a href="{% url 'auth_password_change' %}">Zmień hasło</a>
 					</p>
+					
+					<hr/>
+					<p>
+						<a class="right" href="{% url 'bet_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span>Dodaj nowy</a>
+					</p>
+					<h3>Twoje typy</h3>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Przeciwnicy</th>
+								<th>Wynik</th>
+								<th>Data spotkania</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for bet in bets %}
+							<tr>
+								<td>{{ bet.team1 }} vs {{ bet.team2 }}</td>
+								<td>{{ bet.score1 }} vs {{ bet.score2 }}</td>
+								<td>{{ bet.date }}</td>
+								<th><a class="right" href="/bet/delete/{{ bet.id }}" class="top-menu"><span class="glyphicon glyphicon-trash"></span> Usuń</a></th>
+							</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+					
 					{% else %}
 					   <a href="{% url 'auth_login' %}">Zaloguj</a>
 					{% endif %}
