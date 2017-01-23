@@ -1,1 +1,10 @@
 header { margin-bottom: 30px;}
+.nav-acount {
+	float: right;
+    color: #fff;
+    padding: 15px;
+}
+
+.nav-acount a {
+	color: #fff;
+}

@@ -26,5 +26,9 @@ def news_list(request):
 def news_detail(request, url):
     news = get_object_or_404(News, url=url)
     return render(request, 'betservice/news_detail.html', {'news': news})
+	
+def profile(request):
+    
+    return render(request, 'betservice/profile.html')
 
 
