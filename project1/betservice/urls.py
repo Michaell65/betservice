@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^news/([0-9a-z\-]+)$', views.news_detail, name='news_detail'),
 	url(r'^accounts/profile/$', views.profile, name='profile'),
 	url(r'^bet/new/$', views.bet_new, name='bet_new'),
-	url(r'^bet/delete/([1-9]+)$', views.bet_delete, name='bet_delete'),
-   # url(r'^accounts/', include('registration.backends.simple.urls'))
+	url(r'^bet/delete/([0-9]+)$', views.bet_delete, name='bet_delete'),
+	url(r'^bet/byuser/([0-9]+)$', views.bet_list_by_user, name='bet_list_by_user'),
+	url(r'^bet/list$', views.bet_list, name='bet_list'),
 ]

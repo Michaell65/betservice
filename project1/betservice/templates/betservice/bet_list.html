@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Typy</title>
+
+    {% include 'betservice/head.html' %}
+</head>
+{% include 'betservice/header.html' %}
+<div class="container">
+
+    <h3>Typy</h3>
+	<hr/>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Przeciwnicy</th>
+								<th>Wynik</th>
+								<th>Kurs</th>
+								<th>Stawka</th>
+								<th>Data spotkania</th>
+								<th>Użytkownik</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for bet in bets %}
+							<tr>
+								<td>{{ bet.team1 }} vs {{ bet.team2 }}</td>
+								<td>{{ bet.score1 }} : {{ bet.score2 }}</td>
+								<td>{{ bet.ratio }}</td>
+								<td>{{ bet.rate }}</td>
+								<td>{{ bet.date }}</td>
+								<td><a href="/bet/byuser/{{ bet.user.id }}">{{ bet.user }}</a></td>
+							</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+</div>
+{% include 'betservice/footer.html' %}
+</body>
+</html>

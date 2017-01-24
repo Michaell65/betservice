@@ -27,6 +27,8 @@
 							<tr>
 								<th>Przeciwnicy</th>
 								<th>Wynik</th>
+								<th>Kurs</th>
+								<th>Stawka</th>
 								<th>Data spotkania</th>
 								<th></th>
 							</tr>
@@ -36,6 +38,8 @@
 							<tr>
 								<td>{{ bet.team1 }} vs {{ bet.team2 }}</td>
 								<td>{{ bet.score1 }} vs {{ bet.score2 }}</td>
+								<td>{{ bet.ratio }}</td>
+								<td>{{ bet.rate }}</td>
 								<td>{{ bet.date }}</td>
 								<th><a class="right" href="/bet/delete/{{ bet.id }}" class="top-menu"><span class="glyphicon glyphicon-trash"></span> Usuń</a></th>
 							</tr>

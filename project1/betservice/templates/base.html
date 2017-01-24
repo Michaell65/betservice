@@ -10,18 +10,7 @@
 
 <body>
 {% include 'betservice/header.html' %}
-    <div id="header">
 
-
-    {% if user.is_authenticated %}
-					{% trans "Konto:" %}: {{ user.username }} 
-					(<a href="{% url 'auth_logout' %}">{% trans "Zalogowany" %}</a> | 
-					<a href="{% url 'auth_password_change' %}">{% trans "Zmień hasło" %}</a>)
-				{% else %}
-				   <a href="{% url 'auth_login' %}">{% trans "Zalogowany" %}</a>
-				{% endif %}
-
-    </div>
 <div class="container">
     <div id="content">
     {% block content %}{% endblock %}

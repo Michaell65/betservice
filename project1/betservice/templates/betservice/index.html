@@ -27,30 +27,42 @@
             <img class="img-responsive" src="{% static 'images/main1.jpg' %}" />
         </div>
     </div>
+	<div class="row">
+		<div class="col-md-8">
+			<h2>Baza wiedzy</h2>
+			<hr/>
+			<div class="row">
+				{% for article in articles %}
+				<div class="col-md-4">
+					<h3>{{ article.title }}</h3>
+					<p>{{ article.description|linebreaksbr }}</p>
+					<a href="/articles/{{ article.url }}">więcej ...</a>
+				</div>
+				{% endfor %}
+			</div>
 
-    <h2>Baza wiedzy</h2>
-    <hr/>
-    <div class="row">
-        {% for article in articles %}
-        <div class="col-md-4">
-            <h3>{{ article.title }}</h3>
-            <p>{{ article.description|linebreaksbr }}</p>
-            <a href="/articles/{{ article.url }}">więcej ...</a>
-        </div>
-        {% endfor %}
-    </div>
-
-    <h2>Aktualności</h2>
-    <hr/>
-    <div class="row">
-        {% for singleNews in news %}
-        <div class="col-md-4">
-            <h3>{{ singleNews.title }}</h3>
-            <p>{{ singleNews.description|linebreaksbr }}</p>
-            <a href="/news/{{ singleNews.url }}">więcej ...</a>
-        </div>
-        {% endfor %}
-    </div>
+			<h2>Aktualności</h2>
+			<hr/>
+			<div class="row">
+				{% for singleNews in news %}
+				<div class="col-md-4">
+					<h3>{{ singleNews.title }}</h3>
+					<p>{{ singleNews.description|linebreaksbr }}</p>
+					<a href="/news/{{ singleNews.url }}">więcej ...</a>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+		<div class="col-md-4">
+		<h2>Ostatnie typy</h2>
+		<hr/>
+			<ul class="list-group">
+			{% for bet in bets %}
+			  <li class="list-group-item">{{ bet.team1 }} vs {{ bet.team2 }} - {{ bet.ratio }} - {{ bet.rate }} - <a href="/bet/byuser/{{ bet.user.id }}">{{ bet.user }}</a></li>
+			{% endfor %}
+			</ul>
+		</div>
+	</div>
 </div>
 
 {% include 'betservice/footer.html' %}

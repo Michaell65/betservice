@@ -37,7 +37,8 @@ class Bet(models.Model):
 	created = models.DateField(default=timezone.now())
 	description = models.TextField()
 	user = models.ForeignKey(User, unique=False)
-
+	rate = models.DecimalField(default='0,00', decimal_places=2, max_digits=5)
+	ratio = models.DecimalField(default='0,00', decimal_places=2, max_digits=5)
 	
 	def __str__(self):
 		return self.team1 + " vs " + self.team2

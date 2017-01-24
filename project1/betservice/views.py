@@ -3,11 +3,13 @@ from django.shortcuts import redirect
 from django.utils import timezone
 from .models import Article, News, Bet
 from .forms import BetForm
+from django.contrib.auth.models import User
 
 def index(request):
-    articles = Article.objects.order_by('publish_date').all()[:3]
-    news = News.objects.order_by('publish_date').all()[:3]
-    return render(request, 'betservice/index.html', {'news': news, 'articles': articles})
+	bets = Bet.objects.order_by('created').all()[:10]
+	articles = Article.objects.order_by('publish_date').all()[:3]
+	news = News.objects.order_by('publish_date').all()[:3]
+	return render(request, 'betservice/index.html', {'news': news, 'articles': articles, 'bets': bets})
 
 
 def article_list(request):
@@ -34,7 +36,18 @@ def profile(request):
 	bets = Bet.objects.filter(user=request.user).order_by('created')
 	return render(request, 'betservice/profile.html', {'bets': bets})
 
+	
+def bet_list_by_user(request, id):
+	selectedUser = User.objects.filter(id=id)[0]
+	bets = Bet.objects.filter(user=selectedUser).order_by('created')
+	return render(request, 'betservice/bet_list_by_user.html', {'bets': bets, 'selectedUser':selectedUser })
 
+
+def bet_list(request):
+	bets = Bet.objects.order_by('created')
+	return render(request, 'betservice/bet_list.html', {'bets': bets})
+
+	
 def bet_new(request):
 	if request.method == "POST":
 		form = BetForm(request.POST)
